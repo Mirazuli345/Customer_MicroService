@@ -1,0 +1,145 @@
+{
+	"info": {
+		"_postman_id": "2bf9b4dd-366c-4c7f-9305-35f7b6dd9f63",
+		"name": "Customer_MicroService",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23651664"
+	},
+	"item": [
+		{
+			"name": "Post Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"id\",jsonData);\r",
+							"\r",
+							"pm.environment.set(\"document\",jsonData);\r",
+							"\r",
+							"var code = responseCode.code;\r",
+							"\r",
+							"switch(code){\r",
+							"\r",
+							"    case 200: \r",
+							"\r",
+							"        pm.test(\"Status code is Passed\", function () {\r",
+							"            pm.response.to.have.status(200);\r",
+							"        });\r",
+							"\r",
+							"        \r",
+							"\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"personal\",\r\n  \"document\": \"70000000\",\r\n  \"person\": {},\r\n  \"email\": \"linder_reynae@hotmail.com\",\r\n  \"phone\": \"+51940000000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mainUrl}}/customer",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"customer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"personal\",\r\n  \"document\": \"70000000\",\r\n  \"personal\": {\r\n    \"names\": \"Linder Jossemar\",\r\n    \"surnames\": \"Reyna Esquivel\"\r\n  },\r\n  \"business\": {\r\n    \"name\": \"Jossemar SAC\"\r\n  },\r\n  \"email\": \"linder_reynae@hotmail.com\",\r\n  \"phone\": \"+51940000000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{mainUrl}}/customer/{{id}}",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"customer",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{mainUrl}}/customer/{{id}}",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"customer",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{mainUrl}}/customer/{{id}}",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"customer",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Doc get Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{mainUrl}}/customer/{{document}}",
+					"host": [
+						"{{mainUrl}}"
+					],
+					"path": [
+						"customer",
+						"{{document}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
